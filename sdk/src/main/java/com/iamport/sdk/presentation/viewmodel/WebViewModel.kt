@@ -15,9 +15,6 @@ import com.iamport.sdk.domain.utils.WebViewLiveDataEventBus
 import com.orhanobut.logger.Logger.d
 import kotlinx.coroutines.flow.SharedFlow
 import kotlinx.coroutines.launch
-import org.koin.core.component.KoinApiExtension
-
-@KoinApiExtension
 class WebViewModel(private val repository: StrategyRepository) : BaseViewModel(), IamportKoinComponent {
 
     private val bus: WebViewLiveDataEventBus by lazy { WebViewLiveDataEventBus }

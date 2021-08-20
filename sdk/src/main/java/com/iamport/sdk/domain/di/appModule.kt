@@ -13,12 +13,10 @@ import com.iamport.sdk.domain.utils.NativeLiveDataEventBus
 import com.iamport.sdk.presentation.viewmodel.MainViewModel
 import com.iamport.sdk.presentation.viewmodel.WebViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
-import org.koin.core.component.KoinApiExtension
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
 
-@OptIn(KoinApiExtension::class)
 val appModule = module {
     viewModel { MainViewModel(get(), get(), get()) }
     viewModel { WebViewModel(get()) }

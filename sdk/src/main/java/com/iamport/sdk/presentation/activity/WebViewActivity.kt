@@ -17,14 +17,12 @@ import com.iamport.sdk.domain.di.IamportKoinComponent
 import com.iamport.sdk.domain.utils.*
 import com.iamport.sdk.presentation.viewmodel.WebViewModel
 import com.orhanobut.logger.Logger.*
-import kotlinx.coroutines.*
-import org.koin.android.ext.android.get
+import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import org.koin.core.component.KoinApiExtension
+import org.koin.core.component.get
 import org.koin.core.qualifier.named
 
 
-@KoinApiExtension
 class WebViewActivity : BaseActivity<WebviewActivityBinding, WebViewModel>(), IamportKoinComponent {
 
     override val layoutResourceId: Int = R.layout.webview_activity
@@ -170,7 +168,8 @@ class WebViewActivity : BaseActivity<WebviewActivityBinding, WebViewModel>(), Ia
 
         close()
         loadingVisible(false)
-        setResult(Activity.RESULT_OK, Intent().apply { putExtra(CONST.CONTRACT_OUTPUT, iamPortResponse) })
+        setResult(Activity.RESULT_OK,
+            Intent().apply { putExtra(CONST.CONTRACT_OUTPUT, iamPortResponse) })
 //        Iamport.callback(iamPortResponse)
 
         this.finish()

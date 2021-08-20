@@ -24,9 +24,7 @@ import com.orhanobut.logger.Logger.d
 import com.orhanobut.logger.Logger.i
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
-import org.koin.core.component.KoinApiExtension
 
-@KoinApiExtension
 class MainViewModel(private val bus: NativeLiveDataEventBus, private val repository: StrategyRepository, application: Application) :
     AndroidViewModel(application), IamportKoinComponent {
 

@@ -29,7 +29,6 @@ import com.orhanobut.logger.PrettyFormatStrategy
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.logger.AndroidLogger
 import org.koin.core.KoinApplication
-import org.koin.core.component.KoinApiExtension
 import org.koin.core.context.startKoin
 import org.koin.core.context.stopKoin
 import org.koin.core.module.Module
@@ -299,7 +298,6 @@ object Iamport {
         }
     }
 
-    @KoinApiExtension
     internal fun coreCertification(
         payment: Payment,
         paymentResultCallback: ((IamPortResponse?) -> Unit)?
@@ -308,7 +306,6 @@ object Iamport {
         iamportSdk?.initStart(payment, paymentResultCallback)
     }
 
-    @KoinApiExtension
     internal fun corePayment(
         payment: Payment,
         approveCallback: ((IamPortApprove) -> Unit)?,

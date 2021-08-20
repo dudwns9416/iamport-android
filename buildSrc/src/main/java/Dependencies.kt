@@ -99,6 +99,7 @@ object Libs {
     const val koin_androidx_viewmodel = "io.insert-koin:koin-androidx-viewmodel:${Versions.koin_version}"
     const val koin_androidx_fragment = "io.insert-koin:koin-androidx-fragment:${Versions.koin_version}"
     const val koin_androidx_ext = "io.insert-koin:koin-androidx-ext:${Versions.koin_version}"
+    const val koin_android = "io.insert-koin:koin-android:3.1.2"
 
 
     // Retorofit

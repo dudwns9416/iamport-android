@@ -16,14 +16,12 @@ import com.iamport.sdk.domain.utils.*
 import com.iamport.sdk.presentation.viewmodel.WebViewModel
 import com.orhanobut.logger.Logger.*
 import kotlinx.coroutines.*
-import org.koin.core.component.KoinApiExtension
 import org.koin.core.component.get
 import org.koin.core.qualifier.named
 
 
-@KoinApiExtension
 open class IamPortWebViewMode @JvmOverloads constructor(
-    scope: BaseCoroutineScope = UICoroutineScope()
+    scope: BaseCoroutineScope = UICoroutineScope(),
 ) : IamportKoinComponent, BaseMain, BaseCoroutineScope by scope {
 
     val viewModel: WebViewModel = WebViewModel(get())
@@ -35,7 +33,12 @@ open class IamPortWebViewMode @JvmOverloads constructor(
     /**
      * BaseActivity 에서 onCreate 시 호출
      */
-    fun initStart(activity: ComponentActivity, webview: WebView, payment: Payment, paymentResultCallBack: ((IamPortResponse?) -> Unit)?) {
+    fun initStart(
+        activity: ComponentActivity,
+        webview: WebView,
+        payment: Payment,
+        paymentResultCallBack: ((IamPortResponse?) -> Unit)?,
+    ) {
         i("HELLO I'MPORT WebView MODE SDK!")
         this.activity = activity
         this.webview = webview
@@ -57,7 +60,8 @@ open class IamPortWebViewMode @JvmOverloads constructor(
                 viewModel.run {
                     openWebView().observe(it, EventObserver(this@IamPortWebViewMode::openWebView))
 //                    niceTransRequestParam().observe(it, EventObserver(this@IamPortWebViewMode::openNiceTransApp))
-                    thirdPartyUri().observe(it, EventObserver(this@IamPortWebViewMode::openThirdPartyApp))
+                    thirdPartyUri().observe(it,
+                        EventObserver(this@IamPortWebViewMode::openThirdPartyApp))
                     impResponse().observe(it, EventObserver(this@IamPortWebViewMode::sdkFinish))
 
                     requestPayment(pay)
